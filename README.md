@@ -1,229 +1,48 @@
-# Caveman — Skill
+# caveman
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
-[![Universal AI Agent Skill](https://img.shields.io/badge/Universal-AI_Agent_skill-orange)](#)
-[![Category: Productivity](https://img.shields.io/badge/Category-Productivity-purple)](#)
+Talk like smart caveman. Same brain, fewer tokens.
 
-| Field | Value |
-| --- | --- |
-| **Name** | `caveman-skill` |
-| **Description** | Ultra-compressed communication mode. Cuts output tokens 65% (measured) by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra, wenyan-lite, wenyan-full, wenyan-ultra. Use when user says "caveman mode", "talk like caveman", "use caveman", "less tokens", "be brief", or invokes /caveman. Also auto-triggers when token efficiency is requested. |
-| **Category** | productivity |
-| **Version** | `1.0.0` |
-| **Author** | Community |
-| **License** | MIT |
-| **Platforms** | Linux, macOS, Windows |
+## What it does
 
----
+Compress every model response to caveman-style prose. Drops articles, filler, pleasantries, and hedging. Keeps every technical detail, code block, error string, and symbol exact. Cuts 65% of output tokens (measured) with full accuracy preserved. Mode persists for the whole session until changed or stopped.
 
-## What it is
+Six intensity levels:
 
-Ultra-compressed communication mode. Cuts output tokens 65% (measured) by speaking like caveman
-while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra,
-wenyan-lite, wenyan-full, wenyan-ultra.
-Use when user says "caveman mode", "talk like caveman", "use caveman", "less tokens",
-"be brief", or invokes /caveman. Also auto-triggers when token efficiency is requested.
+| Level | What change |
+|-------|-------------|
+| `lite` | Drop filler/hedging. Sentences stay full. Professional but tight. |
+| `full` | Default. Drop articles, fragments OK, short synonyms. |
+| `ultra` | Bare fragments. Abbreviations (DB, auth, fn). Arrows for causality. |
+| `wenyan-lite` | Classical Chinese register, light compression. |
+| `wenyan-full` | Maximum 文言文. 80-90% character reduction. |
+| `wenyan-ultra` | Extreme classical compression. |
 
-This is a universal AI agent skill — platform-agnostic and usable inside any modern agent runtime that supports the skill file format (`SKILL.md`). It provides focused capabilities with proper configuration, reproducible outputs, and safe defaults.
+Auto-clarity rule: caveman drops to normal prose for security warnings, irreversible-action confirmations, multi-step sequences where fragment ambiguity risks misread, and when user repeats a question. Resumes after the clear part.
 
-**Important:** Use only on targets you own or have explicit permission to work with. Do not use for unauthorized system access, data scraping, or activities that violate applicable laws or terms of service.
-
----
-
-## 🇬🇧 English
-
-### Requirements
-
-- A compatible AI agent runtime that supports skills (Hermes, OpenClaw, Claude Code, Codex, etc.)
-- Python 3.10+ for skills that delegate to scripts
-- Network access if the skill requires remote data fetching, API calls, or web scraping
-- Write permissions to your project/output folder
-
-### Installation
-
-```bash
-# Option A: Copy skill directory into your agent's skills folder
-cp -r productivity/caveman ~/.hermes/skills/productivity/caveman/
-
-# Option B: Install directly from this repository's raw SKILL.md URL
-<agent-cli> skills install https://raw.githubusercontent.com/iizcm/caveman-skill/main/SKILL.md
-
-# Option C: Clone this entire repo into your skills directory
-git clone https://github.com/iizcm/caveman-skill.git ~/.hermes/skills/productivity/caveman/
-```
-
-### Step-by-step usage
-
-**Step 1** — Create a project folder:
-
-```bash
-mkdir -p ~/projects/example
-cd ~/projects/example
-```
-
-**Step 2** — Load the skill into your agent:
-
-```text
-skill_view(name="productivity/caveman")
-```
-
-The exact command varies by runtime. Some agents auto-load skills by matching task descriptions; others require explicit loading commands.
-
-**Step 3** — Invoke a task with natural language:
-
-```text
-Use the caveman skill to <describe your specific task here>
-```
-
-Wrap your request as a clear, single-sentence instruction so the agent routes it to the right skill handler.
-
-**Step 4** — Inspect outputs:
-
-```bash
-ls -la out/
-cat out/*.log   # check logs
-```
-
-Most skills write outputs under an `out/` folder by default. Check logs, files, images, reports, and other artifacts there.
-
-**Step 5** — Customize for your workflow:
-
-- Edit the skill's `SKILL.md` frontmatter to change its name, tags, or trigger keywords
-- Modify default parameters inside the skill body for permanent behavior changes
-- Combine with other skills for compound automation (e.g., HTML generation + screenshot capture)
-
-### Troubleshooting
-
-| Symptom | Likely cause | Fix |
-| --- | --- | --- |
-| Skill not found / not loaded | Not installed in active skills directory | Re-run install command above |
-| Network timeout or API error | Internet blocked, proxy misconfigured, or rate-limited | Check connectivity; configure proxy if needed |
-| Permission denied on output folder | Folder not writable by current user | `chmod` or run from user-owned directory |
-| No output produced | Input format doesn't match expected format | Validate input against skill's documented format |
-| Script execution error | Missing dependency or wrong Python version | `pip install <deps>` listed in skill references |
-
-### Security & safety notes
-
-- Do **not** embed private keys, seed phrases, API tokens, wallet addresses, or personal data in outputs or chat logs
-- Placeholders in examples use `<YOUR_*>` notation — replace them before production use
-- Always validate/simulate outputs before acting on them, especially for write/destructive actions
-- This skill never stores credentials in plain text; use your runtime's secure credential store
-
----
-
-## 🇮🇩 Bahasa Indonesia
-
-### Persyaratan
-
-- Runtime AI agent yang mendukung format skill (Hermes, OpenClaw, Claude Code, Codex, dll.)
-- Python 3.10+ untuk skill yang menggunakan script eksternal
-- Koneksi internet jika skill perlu mengambil data dari luar (API, web scraping, download)
-- Izin tulis ke folder project/output Anda
-
-### Instalasi
-
-```bash
-# Opsi A: Salin folder skill ke direktori skills agent
-cp -r productivity/caveman ~/.hermes/skills/productivity/caveman/
-
-# Opsi B: Pasang langsung dari URL SKILL.md repo ini
-<agent-cli> skills install https://raw.githubusercontent.com/iizcm/caveman-skill/main/SKILL.md
-
-# Opsi C: Clone seluruh repo ini ke direktori skills
-git clone https://github.com/iizcm/caveman-skill.git ~/.hermes/skills/productivity/caveman/
-```
-
-### Langkah penggunaan
-
-**Langkah 1** — Buat folder proyek:
-
-```bash
-mkdir -p ~/projects/example
-cd ~/projects/example
-```
-
-**Langkah 2** — Muat skill ke dalam agent:
-
-```text
-skill_view(name="productivity/caveman")
-```
-
-Perintah tepat bergantung runtime. Beberapa agent otomatis-muat skill berdasarkan deskripsi tugas; lainnya perlu perintah eksplisit.
-
-**Langkah 3** — Panggil tugas dengan bahasa alami:
-
-```text
-Gunakan skill caveman untuk <deskripsikan tugas spesifik Anda di sini>
-```
-
-Bungkus permintaan sebagai satu kalimat yang jelas agar agent merutekannya ke handler skill yang benar.
-
-**Langkah 4** — Periksa hasil:
-
-```bash
-ls -la out/
-cat out/*.log   # cek log
-```
-
-Kebanyakan skill menulis output di bawah folder `out/`. Cek log, file, gambar, laporan, dan artefak lain di sana.
-
-**Langkah 5** — Sesuaikan untuk alur kerja Anda:
-
-- Edit frontmatter `SKILL.md` untuk ganti nama, tag, atau kata kunci pemicu
-- Ubah parameter default di dalam body skill untuk perubahan perilaku permanen
-- Gabungkan dengan skill lain untuk otomasi compound (misal: generate HTML + screenshot)
-
-### Troubleshooting (ID)
-
-| Gejala | Kemungkinan penyebab | Solusi |
-| --- | --- | --- |
-| Skill tidak ditemukan | Belum terpasang di direktori skills aktif | Jalankan ulang perintah instalasi |
-| Timeout / error API | Terblokir, proxy salah, atau rate limit | Cek koneksi; atur proxy jika perlu |
-| Permission ditolak | Folder output tidak bisa ditulis | `chmod` atau jalankan dari folder milik user |
-| Tidak ada output | Format input tidak sesuai | Sesuaikan input dengan format yang didokumentasikan |
-| Error eksekusi script | Dependency kurang atau versi Python salah | `pip install <deps>` yang tercantum di referensi skill |
-
-### Keamanan
-
-- **Jangan** masukkan private key, mnemonic, token API, alamat wallet, atau data pribadi ke output atau chat log
-- Contoh di dokumentasi menggunakan format `<YOUR_*>` — ganti sebelum dipakai di produksi
-- Selalu validasi/simulasikan output sebelum digunakan, terutama untuk aksi destruktif/tulis
-- Skill ini tidak menyimpan kredensial dalam plain text; gunakan penyimpanan kredensial aman runtime Anda
-
----
-
-## Repository structure
+## How to invoke
 
 ```
-caveman-skill/
-├── README.md              ← This file (bilingual documentation)
-├── SKILL.md               ← Skill definition (frontmatter + usage)
-├── references/            ← Reference docs, guides, checklists
-│   ├── *.md
-│   └── ...
-├── scripts/               ← Executable scripts (Python, JS, Bash)
-│   ├── *.py
-│   ├── *.js
-│   └── *.sh
-├── templates/             ← Template files (if applicable)
-│   └── ...
-└── assets/                ← Static assets (if applicable)
-    └── ...
+/caveman              # full mode (default)
+/caveman lite         # lighter compression
+/caveman ultra        # extreme compression
+/caveman wenyan       # classical Chinese
+stop caveman          # back to normal prose
 ```
 
-All files from the original skill directory are included in this repository.
+## Example output
 
----
+Question: "Why does my React component re-render?"
 
-## Notes
+Normal prose:
+> Your component re-renders because you create a new object reference each render. Wrapping it in `useMemo` will fix the issue.
 
-- Update this README when the skill's interface, options, or behavior changes
-- If you fork this repo, keep the MIT license and attribution intact
-- Report bugs or suggest improvements via GitHub Issues on the original repo
-- For questions about usage, refer to the `SKILL.md` file or the `references/` directory
+Caveman (full):
+> New object ref each render. Inline object prop = new ref = re-render. Wrap in `useMemo`.
 
----
+Caveman (ultra):
+> Inline obj prop → new ref → re-render. `useMemo`.
 
-## License
+## See also
 
-MIT — free to use, modify, and distribute.
+- [`SKILL.md`](./SKILL.md) — full LLM-facing instructions
+- [Caveman README](../../README.md) — repo overview, install, benchmarks
